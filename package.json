@@ -1,9 +1,10 @@
 {
   "name": "barebones-react",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/clt/index.js",
   "scripts": {
-    "serve": "parcel index.html -p 3000"
+    "serve": "parcel --no-source-maps clt/index.html -p 3000",
+    "start": "node dist/srv/index.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -12,6 +13,7 @@
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/express": "^4.17.12",
     "@types/node": "^15.12.0",
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
@@ -35,6 +37,8 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "cors": "^2.8.5"
+    "clt": "^0.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   }
 }

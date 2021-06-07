@@ -1,6 +1,7 @@
 import { Provider } from "react-redux"
-import { Home } from "./home"
-import { Landing } from "./landing"
+import { Home } from "./pages/home"
+import { Landing } from "./pages/landing"
+import { Protected } from "./protected"
 import { Route, Router, Switch } from "react-router-dom"
 import * as hist from "history"
 import { store } from "../store"
@@ -12,7 +13,7 @@ export const App = () => (
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={Landing} />
-        <Route path="/home" exact component={Home} />
+        <Protected path="/home" exact component={Home} />
         <Route component={() => <div>err</div>} />
       </Switch>
     </Router>
