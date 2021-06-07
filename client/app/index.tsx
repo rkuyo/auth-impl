@@ -1,11 +1,11 @@
-import { Provider } from "react-redux";
-import { Home } from "./home";
-import { Landing } from "./landing";
-import { Route, Router, Switch } from "react-router-dom";
-import * as hist from "history";
-import { store } from "../store";
+import { Provider } from "react-redux"
+import { Home } from "./home"
+import { Landing } from "./landing"
+import { Route, Router, Switch } from "react-router-dom"
+import * as hist from "history"
+import { store } from "../store"
 
-const history = hist.createBrowserHistory();
+const history = hist.createBrowserHistory()
 
 export const App = () => (
   <Provider store={store}>
@@ -17,4 +17,4 @@ export const App = () => (
       </Switch>
     </Router>
   </Provider>
-);
+)
