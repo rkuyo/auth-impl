@@ -1,7 +1,8 @@
 import express from "express"
+import { config } from "./env"
 
 const app = express()
 
-const PORT = process.env.PORT || 3001
-app.listen(PORT)
-console.log(`listening on port ${PORT}`)
+const port = config.port
+app.listen(port)
+console.log(`listening on port ${port}`)

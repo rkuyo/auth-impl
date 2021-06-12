@@ -1,16 +1,15 @@
-import dotenv from "dotenv"
 import knex, { Knex } from "knex"
+import { config } from "../env"
 
-dotenv.config()
-
-const config: Knex.Config<any> = {
+const dbConfig: Knex.Config<any> = {
   client: "pg",
   connection: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWD,
-    database: process.env.DB_NAME,
+    host: config.db.host,
+    port: config.db.port,
+    user: config.db.user,
+    password: config.db.password,
+    database: config.db.database,
   },
 }
 
-export const db = knex(config)
+export const db = () => knex(dbConfig)

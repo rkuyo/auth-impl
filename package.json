@@ -1,11 +1,12 @@
 {
   "name": "barebones-react",
   "version": "1.0.0",
-  "main": "build/clt/index.js",
+  "main": "dist/clt/index.js",
   "scripts": {
     "serve": "parcel --no-source-maps clt/index.html -p 3000",
-    "start": "node build/srv/index.js",
-    "db": "docker run -dt --name auth_starter -p 5433:5432 --env POSTGRES_USER=postgres --env POSTGRES_PASSWORD=auth123 --env POSTGRES_DB=auth_starter postgres"
+    "start": "node dist/srv/index.js",
+    "db": "docker run -dt --name auth_starter -p 5433:5432 --env POSTGRES_USER=postgres --env POSTGRES_PASSWORD=auth123 --env POSTGRES_DB=auth_starter postgres",
+    "migrate": "node -r module-alias/register dist/srv/db/migrate.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -24,6 +25,7 @@
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux": "^3.6.0",
+    "@types/uuid": "^8.3.0",
     "jsonwebtoken": "^8.5.1",
     "parcel-bundler": "^1.12.5",
     "react": "^17.0.2",
@@ -41,6 +43,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "knex": "^0.95.6",
+    "module-alias": "^2.2.2",
     "pg": "^8.6.0",
     "uuid": "^8.3.2"
   }
