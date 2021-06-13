@@ -4,9 +4,10 @@ import user from "./user"
 
 const app = express()
 app.use(cors())
+app.use(express.json())
 
 const router = Router()
-router.use('/user', user)
+router.use("/user", user)
 
 app.use(router)
 

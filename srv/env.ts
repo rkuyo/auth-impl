@@ -11,6 +11,7 @@ export const config = {
     user: get("DB_USER", "postgres"),
     password: get("DB_PASSWD", "auth123"),
   },
+  secret: get("SECRET"),
 }
 
 function get(key: string, fallback?: string): string {
