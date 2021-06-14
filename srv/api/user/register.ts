@@ -1,31 +1,20 @@
 import { Request, Response } from "express"
-import { db, Schema, tables } from "../../db"
-import { encrypt, generateToken } from "../auth"
-import { v4 as uuidv4 } from "uuid"
-
-type Body = {
-  un: string
-  pw: string
-}
+import { createUser, encrypt, findUser, generateToken } from "../auth"
+import { err_exists, err_missing } from "../auth/errors"
+import { AuthBody } from "./types"
 
 export const register = async (
-  { body }: Request<any, any, Body>,
+  { body }: Request<any, any, AuthBody>,
   res: Response
 ) => {
   const { un, pw } = body
   if (!un || !pw) {
-    return res.status(400).json({
-      status: "error",
-      messsage: "Missing a required field.",
-    })
+    return res.status(400).json(err_missing)
   }
 
   const existing = await findUser(un)
   if (existing) {
-    return res.status(409).json({
-      status: "error",
-      message: "Username is taken.",
-    })
+    return res.status(409).json(err_exists)
   }
 
   const hash = await encrypt(pw)
@@ -34,22 +23,4 @@ export const register = async (
   const token = generateToken(un)
 
   res.json(token)
-}
-
-const findUser = async (un: string) => {
-  const existing = await db()
-    .table(tables.users)
-    .where({ username: un })
-    .select()
-  return existing.length > 0
-}
-
-const createUser = async (un: string, hash: string) => {
-  const newUser: Schema.User = {
-    user_id: uuidv4(),
-    username: un,
-    hash,
-    created_at: new Date(),
-  }
-  await db().table(tables.users).insert(newUser)
 }
