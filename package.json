@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "parcel --no-source-maps clt/index.html -p 3000",
     "start": "node dist/srv/index.js",
-    "db": "docker run -dt --name auth_starter -p 5433:5432 --env POSTGRES_USER=postgres --env POSTGRES_PASSWORD=auth123 --env POSTGRES_DB=auth_starter postgres",
+    "db": "docker run -dt --name authdb -p 5433:5432 --env POSTGRES_USER=postgres --env POSTGRES_PASSWORD=abc --env POSTGRES_DB=auth postgres",
     "migrate": "node -r module-alias/register dist/srv/db/migrate.js"
   },
   "license": "MIT",

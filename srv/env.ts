@@ -7,9 +7,9 @@ export const config = {
   db: {
     host: get("DB_HOST", "localhost"),
     port: Number(get("DB_PORT", "5433")),
-    database: get("DB_DATABASE", "auth_starter"),
+    database: get("DB_DATABASE", "auth"),
     user: get("DB_USER", "postgres"),
-    password: get("DB_PASSWD", "auth123"),
+    password: get("DB_PASSWD", "abc"),
   },
   secret: get("SECRET"),
 }
