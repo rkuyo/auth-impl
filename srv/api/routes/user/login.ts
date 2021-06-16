@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
-import { compare, findUser, generateToken } from "../auth"
-import { err_invalid, err_missing } from "../auth/errors"
+import { compare, findUser, generate, err } from "../../auth"
 import { AuthBody } from "./types"
 
 export const login = async (
@@ -9,7 +8,7 @@ export const login = async (
 ) => {
   const { un, pw } = body
   if (!un || !pw) {
-    return res.status(400).json(err_missing)
+    return res.status(400).json(err.field)
   }
 
   const user = await findUser(un)
@@ -22,10 +21,10 @@ export const login = async (
 
   const valid = await compare(pw, user.hash)
   if (!valid) {
-    return res.status(401).json(err_invalid)
+    return res.status(401).json(err.credentials)
   }
 
-  const token = generateToken(un)
+  const token = generate(un)
 
   res.json(token)
 }

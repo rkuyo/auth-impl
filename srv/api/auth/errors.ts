@@ -1,11 +1,21 @@
-export const err_missing = {
+const field = {
   messsage: "Missing a required field.",
 }
 
-export const err_exists = {
+const exists = {
   message: "Username is taken.",
 }
 
-export const err_invalid = {
+const credentials = {
   message: "Invalid username or password.",
 }
+
+const noHeader = {
+  message: "No Authorization header was found.",
+}
+
+const unauthorized = {
+  message: "Unauthorized.",
+}
+
+export const err = { field, exists, credentials, noHeader, unauthorized }
