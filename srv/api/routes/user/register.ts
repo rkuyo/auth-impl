@@ -21,5 +21,5 @@ export const register = async (
 
   const token = generate(un)
 
-  res.json(token)
+  res.json({ success: true, token })
 }

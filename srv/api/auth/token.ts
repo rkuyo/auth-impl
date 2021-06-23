@@ -3,7 +3,7 @@ import { config } from "../../env"
 
 export const generate = (un: string) => {
   return jwt.sign({ sub: un }, config.secret, {
-    expiresIn: "15m",
+    expiresIn: "10m",
   })
 }
 

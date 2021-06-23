@@ -13,10 +13,7 @@ export const login = async (
 
   const user = await findUser(un)
   if (!user) {
-    return res.status(401).json({
-      status: "error",
-      messsage: "Invalid username or password.",
-    })
+    return res.status(401).json(err.credentials)
   }
 
   const valid = await compare(pw, user.hash)
@@ -26,5 +23,5 @@ export const login = async (
 
   const token = generate(un)
 
-  res.json(token)
+  res.json({ success: true, token })
 }
