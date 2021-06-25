@@ -13,4 +13,4 @@ JWT authentication implementation with Node.
 - Serve the app: `yarn serve`
 - Start the server: `yarn start`
 - Create the Postgres instance in Docker: `yarn db`
-- Migrate to the latest schema: `yarn migate`
+- Migrate to the latest schema: `yarn migrate`
