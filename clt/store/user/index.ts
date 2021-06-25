@@ -30,13 +30,13 @@ export const reducer: Reducer<State, Actions> = (state = init, action) => {
       if (action.success && token) {
         setToken(token)
         const sub = jwt.decode(token)?.sub
-        return { ...state, sub }
+        return { ...state, sub, err: undefined }
       }
       return { ...state, err: action.message }
     }
     case "USER_LOGOUT": {
       clearToken()
-      return { ...state, sub: undefined }
+      return { ...state, sub: undefined, err: undefined }
     }
     case "INIT": {
       const token = getToken()
