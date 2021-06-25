@@ -1,6 +1,6 @@
 import "./landing.scss"
 import { useState } from "react"
-import { Signup } from "../../components"
+import { Register } from "../../components"
 import { Login } from "../../components"
 
 export const Landing: React.FC = () => {
@@ -29,7 +29,7 @@ export const Landing: React.FC = () => {
 
       <div className="buttons">
         <Login un={un} pw={pw}></Login>
-        <Signup un={un} pw={pw}></Signup>
+        <Register un={un} pw={pw}></Register>
       </div>
     </div>
   )

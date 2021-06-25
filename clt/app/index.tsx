@@ -14,7 +14,7 @@ export const App = () => (
       <Switch>
         <Route path="/" exact component={Landing} />
         <Protected path="/home" exact component={Home} />
-        <Route component={() => <div>err</div>} />
+        <Route component={() => <div>404</div>} />
       </Switch>
     </Router>
   </Provider>

@@ -1,4 +1,11 @@
-import { createStore, Reducer } from "redux"
+import { applyMiddleware, createStore } from "redux"
+import { composeWithDevTools } from "redux-devtools-extension"
+import thunk from "redux-thunk"
+import { reducer } from "./reducer"
 
-const reducer: Reducer = (s: any, _: any) => s
-export const store = createStore(reducer)
+export const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(thunk))
+)
+
+store.dispatch({ type: "INIT" })

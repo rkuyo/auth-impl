@@ -1,6 +1,6 @@
 const field = {
   success: false,
-  messsage: "Missing a required field.",
+  message: "Missing a required field.",
 }
 
 const exists = {
