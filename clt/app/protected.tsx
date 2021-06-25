@@ -8,7 +8,7 @@ type Props = {
 }
 
 const _Protected: React.FC<RouteProps & Props> = ({ user, ...routeProps }) => {
-  if (!user.token) return <Redirect to="/" />
+  if (!user.sub) return <Redirect to="/" />
   return <Route {...routeProps} />
 }
 

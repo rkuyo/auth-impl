@@ -17,8 +17,6 @@ export const login =
         pw,
       })
 
-      console.log(res)
-
       const { success, token, message } = res.data
 
       dispatch({
@@ -62,7 +60,6 @@ export const register =
 
       then()
     } catch (ex) {
-      console.log(ex.response.data)
       dispatch({
         type: "USER_AUTHENTICATE",
         success: false,

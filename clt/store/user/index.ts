@@ -1,5 +1,6 @@
 import { Reducer } from "redux"
-import { clearToken, getToken, setToken } from "../storage"
+import { clearToken, getToken, isValid, setToken } from "../tokens"
+import * as jwt from "jsonwebtoken"
 
 export type Actions =
   | {
@@ -13,34 +14,41 @@ export type Actions =
     }
   | {
       type: "USER_LOGOUT"
-      then: () => any
     }
 
 type State = {
-  token: string | undefined
+  sub: string | { [key: string]: any } | undefined
   err: string | undefined
 }
 
-const init: State = { token: undefined, err: undefined }
+const init: State = { sub: undefined, err: undefined }
 
 export const reducer: Reducer<State, Actions> = (state = init, action) => {
   switch (action.type) {
     case "USER_AUTHENTICATE": {
-      if (action.success && action.token) {
-        setToken(action.token)
-        return { ...state, token: action.token }
+      const { token } = action
+      if (action.success && token) {
+        setToken(token)
+        const sub = jwt.decode(token)?.sub
+        return { ...state, sub }
       }
       return { ...state, err: action.message }
     }
     case "USER_LOGOUT": {
       clearToken()
-      action.then()
-      return { ...state, token: undefined }
+      return { ...state, sub: undefined }
     }
     case "INIT": {
-      const token = getToken() ?? undefined
-      // TODO: check token
-      return { ...state, token }
+      const token = getToken()
+      if (!token) return state
+
+      if (!isValid(token)) {
+        clearToken()
+        return { ...state, sub: undefined }
+      }
+
+      const sub = jwt.decode(token)?.sub
+      return { ...state, sub }
     }
     default:
       return state

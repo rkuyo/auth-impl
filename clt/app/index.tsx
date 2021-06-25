@@ -5,8 +5,9 @@ import { Protected } from "./protected"
 import { Route, Router, Switch } from "react-router-dom"
 import * as hist from "history"
 import { store } from "../store"
+import { Status } from "./components/status"
 
-const history = hist.createBrowserHistory()
+export const history = hist.createBrowserHistory()
 
 export const App = () => (
   <Provider store={store}>
@@ -17,5 +18,6 @@ export const App = () => (
         <Route component={() => <div>404</div>} />
       </Switch>
     </Router>
+    <Status />
   </Provider>
 )
