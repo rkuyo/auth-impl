@@ -18,10 +18,15 @@ export const clearToken = () => {
   localStorage.removeItem(tokenKey)
 }
 
-export const isValid = (token: string) => {
+export const getPayload = (token: string) => {
   const payload = jwt.decode(token)
+  if (typeof payload === "string") return null
+  return payload
+}
 
-  if (!payload || typeof payload === "string") return false
+export const isValid = (token: string) => {
+  const payload = getPayload(token)
+  if (!payload) return false
 
   const valid = payload.exp * 1000 > Date.now()
   return valid

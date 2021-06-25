@@ -1,6 +1,11 @@
 .status {
   position: fixed;
   bottom: 0;
-  margin: 12px;
+  margin-bottom: 8px;
   font-size: 24px;
+
+  .timer {
+    display: flex;
+    align-items: center;
+  }
 }
