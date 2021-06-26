@@ -1,9 +1,10 @@
 import "./landing.scss"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Register } from "../../components"
 import { Login } from "../../components"
 import { RootState } from "clt/store/types"
 import { connect } from "react-redux"
+import { useHistory } from "react-router"
 
 type Props = {
   user: RootState["user"]
@@ -13,12 +14,17 @@ const _Landing: React.FC<Props> = ({ user }) => {
   const [un, setUn] = useState("")
   const [pw, setPw] = useState("")
 
-  const onUnChange = (ev: any) => {
-    setUn(ev.target.value)
+  const hist = useHistory()
+  useEffect(() => {
+    if (user.sub) hist.push("/home")
+  })
+
+  const onUnChange = (ev: React.FormEvent<HTMLInputElement>) => {
+    setUn(ev.currentTarget.value)
   }
 
-  const onPwChange = (ev: any) => {
-    setPw(ev.target.value)
+  const onPwChange = (ev: React.FormEvent<HTMLInputElement>) => {
+    setPw(ev.currentTarget.value)
   }
 
   return (
