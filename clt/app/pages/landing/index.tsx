@@ -39,12 +39,12 @@ const _Landing: React.FC<Props> = ({ user }) => {
         <input value={pw} onChange={onPwChange}></input>
       </div>
 
-      <div className="err">{user.err}</div>
-
       <div className="buttons">
         <Login un={un} pw={pw}></Login>
         <Register un={un} pw={pw}></Register>
       </div>
+
+      <div className="err">{user.err}</div>
     </div>
   )
 }

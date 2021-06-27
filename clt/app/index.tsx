@@ -6,6 +6,7 @@ import { Route, Router, Switch } from "react-router-dom"
 import * as hist from "history"
 import { store } from "../store"
 import { Status } from "./components/status"
+import { Call } from "./components/call"
 
 export const history = hist.createBrowserHistory()
 
@@ -18,6 +19,7 @@ export const App = () => (
         <Route component={() => <div>404</div>} />
       </Switch>
     </Router>
+    <Call />
     <Status />
   </Provider>
 )

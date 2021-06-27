@@ -13,7 +13,7 @@ const _Status: React.FC<Props> = ({ user }) => {
       return <div>🔒</div>
     }
     return (
-      <div className="timer">
+      <div className="status">
         🔑 <Timer />
       </div>
     )

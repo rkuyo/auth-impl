@@ -3,13 +3,14 @@ import { ThunkAction } from "redux-thunk"
 import { RootState } from "../types"
 import axios from "axios"
 import { Actions } from "."
+import { Actions as ResourceActions } from "../resource"
 
 export const login =
   (
     un: string,
     pw: string,
     then: () => any
-  ): ThunkAction<any, RootState, unknown, Actions> =>
+  ): ThunkAction<any, RootState, unknown, Actions | ResourceActions> =>
   async (dispatch) => {
     try {
       const res = await axios.post(`http://localhost:3001/user/login`, {
@@ -18,6 +19,10 @@ export const login =
       })
 
       const { success, token, message } = res.data
+
+      dispatch({
+        type: "PROTECTED_CLEAR",
+      })
 
       dispatch({
         type: "USER_AUTHENTICATE",
@@ -41,7 +46,7 @@ export const register =
     un: string,
     pw: string,
     then: () => any
-  ): ThunkAction<any, RootState, unknown, Actions> =>
+  ): ThunkAction<any, RootState, unknown, Actions | ResourceActions> =>
   async (dispatch) => {
     try {
       const res = await axios.post(`http://localhost:3001/user/register`, {
@@ -50,6 +55,10 @@ export const register =
       })
 
       const { success, token, message } = res.data
+
+      dispatch({
+        type: "PROTECTED_CLEAR",
+      })
 
       dispatch({
         type: "USER_AUTHENTICATE",

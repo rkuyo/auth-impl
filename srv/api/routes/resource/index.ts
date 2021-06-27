@@ -1,9 +1,9 @@
 import { Router } from "express"
 import { authenticate } from "../../auth"
-import { protectedHandler } from "./protected"
+import { resource } from "./protected"
 
 export { router as default }
 
 const router = Router()
 
-router.get("/", authenticate, protectedHandler)
+router.get("/", authenticate, resource)
