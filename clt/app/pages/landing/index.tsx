@@ -36,7 +36,7 @@ const _Landing: React.FC<Props> = ({ user }) => {
 
       <div className="input">
         <small>Password</small>
-        <input value={pw} onChange={onPwChange}></input>
+        <input value={pw} onChange={onPwChange} type="password"></input>
       </div>
 
       <div className="buttons">
