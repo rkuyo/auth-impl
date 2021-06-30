@@ -1,5 +1,5 @@
 # node-auth
-JWT authentication implementation with Node.
+JWT authentication server implementation with Node. Includes a React demo.
 
 ### Inclusions
 - Docker
@@ -7,10 +7,13 @@ JWT authentication implementation with Node.
 - Node
 - Express
 - jsonwebtoken
-- [Knex](https://github.com/knex/knex)
+- Knex.js
+- React (demo)
+- Redux (demo)
 
-### Scripts
-- Serve the app: `yarn serve`
-- Start the server: `yarn start`
+### Scripts 
+*Run these in order on initial setup*
 - Create the Postgres instance in Docker: `yarn db`
-- Migrate to the latest schema: `yarn migrate`
+- Migrate the database to the latest schema: `yarn migrate`
+- Start the server: `yarn start`
+- Serve the demo app: `yarn serve`
